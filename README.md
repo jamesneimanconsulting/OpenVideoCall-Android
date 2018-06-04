@@ -268,15 +268,15 @@ TextView (unnamed using the `label_title_frame_rate` string|Header title for fra
  
 ### Create MainActivity Class
 
+*MainActivity.java* defines and connects application functionality with the [main activity UI](#mainactivity).
+
 - [Add Import Statements](#add-import-statements)
 - [Initialize the Layout](#initialize-the-layout)
-- [Channel Name Text Box](#channel-name-text-box)
-- [Encryption Mode Chooser](#encryption-mode-chooser)
-- [Options menu](#options-menu)
-- [Join Button](#join-button)
-- [Settings Button](#settings-button)
-
-*MainActivity.java* defines and connects application functionality with the [main activity UI](#mainactivity).
+- [Define Channel Name Text Box](#channel-name-text-box)
+- [Define Encryption Mode Chooser](#encryption-mode-chooser)
+- [Populate the Options Menu](#options-menu)
+- [Define the Join Button Actions](#join-button)
+- [Define the Settings Button Action](#settings-button)
 
 #### Add Import Statements
 
@@ -288,7 +288,7 @@ import io.agora.openvcall.model.ConstantApp;
 
 ```
 
-<div style="text-align: right"><a href="#create-mainactivity-class">Back to "Create MainActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-mainactivity-class">Back to top of section</a></div>
 
 #### Initialize the Layout
 
@@ -311,11 +311,11 @@ The `initUIandEvent()` method defines the UI elements and associated event liste
     }
 ```        
 
-<div style="text-align: right"><a href="#create-mainactivity-class">Back to "Create MainActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-mainactivity-class">Back to top of section</a></div>
 
-#### Channel Name Text Box
+#### Define Channel Name Text Box
 
-Define the channel text input as `v_channel` and add the `beforeTextChanged ` and `onTextChanged ` event listeners using the `v_channel.addTextChangedListener()` method.
+Define the channel text box, where users will specify the channel, as `v_channel` and add the `beforeTextChanged ` and `onTextChanged ` event listeners using the `v_channel.addTextChangedListener()` method.
 
 ``` Java
         EditText v_channel = (EditText) findViewById(R.id.channel_name);
@@ -338,11 +338,11 @@ Define the channel text input as `v_channel` and add the `beforeTextChanged ` an
         });
 ```    
 
-<div style="text-align: right"><a href="#create-mainactivity-class">Back to "Create MainActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-mainactivity-class">Back to top of section</a></div>
 
-#### Encryption Mode Chooser
+#### Define Encryption Mode Chooser
 
-Define the encryption mode chooser as `encryptionSpinner` applying the encryption mode value `adapter`. 
+Define the encryption mode chooser, where users select the encryption mode, as a `Spinner` object, applying the encryption mode value `adapter`. 
 
 ``` Java
         Spinner encryptionSpinner = (Spinner) findViewById(R.id.encryption_mode);
@@ -352,7 +352,7 @@ Define the encryption mode chooser as `encryptionSpinner` applying the encryptio
         encryptionSpinner.setAdapter(adapter);
 ```
 
-Add the `onItemSelected` event listener using the `encryptionSpinner.setOnItemSelectedListener()` method. The sample app also has the optional `onNothingSelected` event listener, which can be used to prompt the user to make a selection.
+Add the `onItemSelected` event listener using the `encryptionSpinner.setOnItemSelectedListener()` method. The sample app also includes the optional `onNothingSelected` event listener, which can be used to prompt the user to make a selection.
 
 ``` Java
         encryptionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -388,9 +388,9 @@ encryptionSpinner.setSelection(vSettings().mEncryptionModeIndex);
     }
 ```    
 
-<div style="text-align: right"><a href="#create-mainactivity-class">Back to "Create MainActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-mainactivity-class">Back to top of section</a></div>
 
-#### Options menu
+#### Populate the Options Menu
 
 When the options menu is created in the `onCreateOptionsMenu()` method, use `inflater.inflate()` to display the menu. 
 
@@ -422,9 +422,9 @@ When a menu option is selected in the `onOptionsItemSelected()` method
     }
 ```    
 
-<div style="text-align: right"><a href="#create-mainactivity-class">Back to "Create MainActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-mainactivity-class">Back to top of section</a></div>
 
-#### Join Button
+#### Define the Join Button Actions
 
 When a user clicks the **Join** button, `onClickJoin()` is invoked. This forwards the user to the channel room, populating:
 
@@ -462,9 +462,9 @@ The `onClickJoin()` method then starts the chat activity `i`, applying:
         startActivity(i);
 ```    
 
-<div style="text-align: right"><a href="#create-mainactivity-class">Back to "Create MainActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-mainactivity-class">Back to top of section</a></div>
 
-#### Settings Button
+#### Define the Settings Button Action
 
 The `forwardToSettings()` method is applied to the **Settings** button, and begins the settings intent `i`. 
 
@@ -475,7 +475,7 @@ The `forwardToSettings()` method is applied to the **Settings** button, and begi
     }
 ```
 
-<div style="text-align: right"><a href="#create-mainactivity-class">Back to "Create MainActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-mainactivity-class">Back to top of section</a></div>
 
  
 ### Create ChatActivity Class
@@ -528,7 +528,7 @@ import io.agora.rtc.RtcEngine;
 import io.agora.rtc.video.VideoCanvas;
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Define Global Variables
 
@@ -573,7 +573,7 @@ Variable name(s)|Description
 `mVideoPreProcessing`|The video pre-processor.
 `mSmallVideoViewAdapter`|The adapter for the small video view.
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Initialize the Layout
 
@@ -632,7 +632,7 @@ Add the encryption key and encryption mode to the configuration of the Agora eng
 
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Grid Video View Event Listener
 
@@ -661,7 +661,7 @@ Add an `onItemDoubleClick` listener to each item in the grid video view containe
         });
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 #### Set up Local Video View and Channel Settings
 
@@ -691,7 +691,7 @@ Apply `surfaceV` to the preview using `worker().preview()` and join the channel 
         worker().joinChannel(channelName, config().mUid);
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Set Channel name Layout Flags and Parameters
 
@@ -715,7 +715,7 @@ At the end of the `initUIandEvent()` method, set the layout parameters of the bo
 
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 #### Message Functionality
 
@@ -743,7 +743,7 @@ The `onClickHideIME()` method hides the view using the `closeIME()` method. It a
 
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Initialize the Message List
 
@@ -763,7 +763,7 @@ Initialize the message list view with the message adapter `mMsgAdapter` and vert
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Message Change Handler
 
@@ -788,7 +788,7 @@ The `notifyMessageChanged()` method completes by notifying the message adapter t
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Send Channel Message
 
@@ -821,7 +821,7 @@ Before sending the message to the SDK, ensure the stream has been created. If th
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 
 ##### Display the Edit Message Container
@@ -874,9 +874,9 @@ If a send message action is received, check if the message is empty using `TextU
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
-####Audio and Video Functionality
+#### Audio and Video Functionality
 
 - [Set Layout Flags and Audio Stream](#set-layout-flags-and-audio-stream)
 - [Return the Video Profile Index](#return-the-video-profile-index)
@@ -902,7 +902,7 @@ The `optional()` method adds layout flags to the windows using `getWindow().addF
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Return the Video Profile Index
 
@@ -926,7 +926,7 @@ If the profile index an available video profile provided by the Agora SDK `Const
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Configure the Agora Engine
 
@@ -940,7 +940,7 @@ The `doConfigEngine()` method adds the current video profile `vProfile`, encrypt
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Switch Camera and Audio Routing
 
@@ -971,7 +971,7 @@ The `onCustomizedFunctionClicked()` method manages the camera and audio routing.
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Leave Channel and End Call
 
@@ -1012,7 +1012,7 @@ The `onEndCallClicked()` method invokes the activity's `finish()` method to dism
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Video Pre-processing
 
@@ -1052,7 +1052,7 @@ The `onBtnNClicked()` method enables video pre-processing `mVideoPreProcessing` 
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Enable / Disable Video
 
@@ -1111,7 +1111,7 @@ Update the Agora RTC engine and layout according to the mute state.
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Mute / Unmute Audio
 
@@ -1141,7 +1141,7 @@ If the audio is muted, a color filter is set using `iv.setColorFilter()` or clea
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Render Remote Video UI
 
@@ -1198,7 +1198,7 @@ The method ends with updating the UI layout, based on `useDefaultLayout`. If the
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Request Remote Stream Type
 
@@ -1210,7 +1210,7 @@ The `requestRemoteStreamType()` method is intended to retrieve the remote stream
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 
 ####UI and Layout Functionality
@@ -1273,7 +1273,7 @@ The event will use the specified `targetUid` unless the current layout is using 
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Reset UI for Enabled / Disabled Video
 
@@ -1306,7 +1306,7 @@ The difference between the methods is the icon used in `iv.setImageResource()`.
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Remove Remote UI
 
@@ -1343,7 +1343,7 @@ The `doRemoveRemoteUi()` method removes a remote user `uid` from the user list `
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Switch to Default Video View
 
@@ -1362,7 +1362,7 @@ Before updating the layout type `mLayoutType`, initialize the grid video view co
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Switch to Small Video View
 
@@ -1401,7 +1401,7 @@ Complete the method by requesting the remote stream time using `requestRemoteStr
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Bind to Small Video View
 
@@ -1498,7 +1498,7 @@ The `bindToSmallVideoView()` method sets the small video view layout.
         mSmallVideoViewDock.setVisibility(View.VISIBLE);
 	```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 #### Main Handlers and Callbacks
 - [Join Channel Success Handler](#join-channel-success-handler)
@@ -1534,7 +1534,7 @@ The `onJoinChannelSuccess()` method first checks if the render is finishing usin
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### User Offline Handler
 
@@ -1547,7 +1547,7 @@ The `onUserOffline()` method removes the remote UI for the user `uid` using `doR
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Headset Plugged Notification
 
@@ -1575,7 +1575,7 @@ The `mSmallVideoViewAdapter()` method updates the audio routing `mAudioRouting`.
     }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Configuration Changed Event
 
@@ -1599,7 +1599,7 @@ The `onConfigurationChanged()` method adds layout changes to its superclass.
     }
 ```    
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 
 #### Handle Extra Callbacks
@@ -1843,7 +1843,7 @@ The `EVENT_TYPE_ON_AUDIO_ROUTE_CHANGED` event sends a notification that the head
         }
 ```
 
-<div style="text-align: right"><a href="#create-chatactivity-class">Back to "Create ChatActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ### Create SettingsActivity
 
