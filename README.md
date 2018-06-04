@@ -75,7 +75,7 @@ The SDK must be integrated into the sample project before it can opened and buil
 8. Copy the .h files from the **include** folder of the downloaded SDK package to the **/app/src/main/cpp/agora** folder of the sample application.
 8. Open the **app/build.gradle** file and add the following line to the `dependencies` list:
 
-	``` JSON
+	```
 	...
 	dependencies {
 		...
