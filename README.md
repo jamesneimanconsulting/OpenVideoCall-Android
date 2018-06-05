@@ -1,51 +1,53 @@
 # Open Video Call for Android
 
-This tutorial enables you to quickly get started with adding video chat into your Android applications using the Agora Video SDK.
+This quickstart enables you to quickly get started to add video chat into your Android applications using the Agora Video SDK.
 
 **With this sample app, you can:**
 
-- [Join / leave channel](#leave-channel-and-end-call).
-- [Mute / unmute audio](#mute-unmute-audio).
-- [Enable / disable video](#enable-disable-video).
-- [Switch camera](#switch-camera-and-audio-routing).
-- [Send message to channel](#message-functionality).
-- [Setup resolution, frame rate and bit rate display](#user-video-stats-event).
-- [Enable encryption](#encryption-mode-chooser).
-- [Enable / disable black and white filter](#video-pre-processing).
+- [Join / leave a channel](#leave-channel-and-end-call)
+- [Mute / unmute audio](#mute-unmute-audio)
+- [Enable / disable video](#enable-disable-video)
+- [Switch camera](#switch-camera-and-audio-routing)
+- [Send a message to a channel](#message-functionality)
+- [Set up resolution, frame rate, and bit rate display](#user-video-stats-event)
+- [Enable encryption](#encryption-mode-chooser)
+- [Enable / disable black-and-white filter](#video-pre-processing)
 
 ## Prerequisites
-- Android Studio 2.0 or above.
+- Android Studio 2.0 or above
 - Android SDK Platform 25+
 - Android SDK Build-Tools 25.0.2+
 - Android NDK
-- Android device (e.g. Nexus 5X)
+- Android device (for example, Nexus 5X)
 	
-	**Note:** A physical device is recommended because some simulators have missing functionality or lack the performance needed to run the sample.
+	**Note:** Use a physical device to run the sample. Some simulators lack the functionality or the performance needed to run the sample.
 
 ## Quick Start
 
-- [Create an Account and Obtain an App ID](#create-an-account-and-obtain-an-app-id)
-- [Integrate the Agora Video SDK](#integrate-the-agora-video-sdk)
-- [Obtain and Build the Sample Application](#obtain-and-build-the-sample-application) 
-
 This section shows you how to prepare, build, and run the sample application.
 
-### Create an Account and Obtain an App ID
-In order to build and run the sample application you must obtain an App ID: 
+- [Create an Account and Obtain an App ID](#create-an-account-and-obtain-an-app-id)
+- [Integrate the Agora Video SDK](#integrate-the-agora-video-sdk)
+- [Download and Build the Sample Application](#obtain-and-build-the-sample-application) 
 
-1. Create a developer account at [agora.io](https://dashboard.agora.io/signin/). Once you finish the signup process, you will be redirected to the Dashboard.
-2. Navigate in the Dashboard tree on the left to **Projects** > **Project List**.
+
+### Create an Account and Obtain an App ID
+To build and run the sample application, first obtain an App ID: 
+
+1. Create a developer account at [agora.io](https://dashboard.agora.io/signin/). Once you finish the signup process, you are redirected to the dashboard.
+2. In the dashboard tree on the left, navigate to **Projects** > **Project List**.
 3. Locate the file **app/src/main/res/values/strings_config.xml** and replace `<#YOUR APP ID#>` with the App ID from the Agora dashboard.
 
 ``` XML
 <string name="private_app_id"><#YOUR APP ID#></string>
 ```
 
+
 ### Integrate the Agora Video SDK
 
-The SDK must be integrated into the sample project before it can opened and built. There are two methods for integrating the Agora Video SDK into the sample project. The first method uses JCenter to automatically integrate the SDK files. The second method requires you to manually copy the SDK files to the project.
+To open and build the sample app, first integrate the SDK into the sample project. There are two methods: The first method uses JCenter to automatically integrate the SDK files, and the second method requires you to manually copy the SDK files to the project.
 
-#### Method 1 - Integrate the SDK Automatically Using JCenter (Recommended)
+#### Method 1: Integrate the SDK Automatically Using JCenter (Recommended)
 
 1. Clone this repository.
 2. Open **app/build.gradle** and add the following line to the `dependencies` list:
@@ -63,7 +65,7 @@ The SDK must be integrated into the sample project before it can opened and buil
 5. Copy the .h files from the **/libs/include** folder of the downloaded SDK package to the **/app/src/main/cpp/agora** folder of the sample application.
 
 
-#### Method 2 - Manually copy the SDK files
+#### Method 2: Manually Copy the SDK Files
 
 1. Clone this repository.
 2. Download the Agora Video SDK from [Agora.io SDK](https://www.agora.io/en/download/).
@@ -84,22 +86,22 @@ The SDK must be integrated into the sample project before it can opened and buil
 	```
 
 
-### Obtain and Build the Sample Application 
+### Download and Build the Sample Application 
 
 Ensure USB debugging is enabled on your device under **Settings > Developer options** and connect the device to your computer.
 
-#### Method 1 - Using Android Studio (Recommended)
+#### Method 1: Using Android Studio (Recommended)
 
 1. Open the sample application in Android Studio.
 2. Build and run the sample project. This should display the application on your device.
 
-**Note:** If your application does not compile in Android Studio, you may need to install additional Android SDK support files. Check the **Build Error** window to troubleshoot.
+**Note:** If your application does not compile in Android Studio, you might need to install additional Android SDK support files. Check the **Build Error** window to troubleshoot.
 
-#### Method 2 - Using Command Line
+#### Method 2: Using the Command Line
 
 1. In Android Studio, select **View > Tool Windows > Terminal** to open the command line app.
 
-2. Build and run the sample project with the following command, replacing `path/to/your_app` with the app directory path and app name. This should display the application on your device.
+2. Build and run the sample project with the following command, replacing `path/to/your_app` with the app directory path and app name. The application displays on your device.
 
 	``` 
 	adb -d install path/to/your_app.apk	
@@ -116,7 +118,7 @@ Ensure USB debugging is enabled on your device under **Settings > Developer opti
 - [Create SettingsActivity Class](#create-settingsactivity-class)
 
 ### Set Permissions
-The `AndroidManifest.xml` file applies a set of `uses-permissions` settings.
+The `AndroidManifest.xml` file applies a set of `uses-permissions` settings:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="io.agora.openvcall">
@@ -148,7 +150,7 @@ Permission name|Permission description
 
 ### Add Activities to Manifest
 
-The sample app has three activities `MainActivity`, `ChatActivity`, and `SettingsActivity`. Add the three activity settings to the `AndroidManifest.xml` file under the `application` node.
+The sample app has three activities `MainActivity`, `ChatActivity`, and `SettingsActivity`. Add the three activity settings to the `AndroidManifest.xml` file under the `application` node:
 
 ``` XML
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="io.agora.openvcall">
@@ -194,19 +196,19 @@ Add the icon assets for the user interface to the `/res/drawable-xxxhdpi` folder
 
 |Asset                   |Description                                                                                        |
 |------------------------|---------------------------------------------------------------------------------------------------|
-|`btn_confirm_white.png`|An image of a white checkbox for confirmation.|
-|`btn_end_call.png`|An image of a red telephone for the *hang up* button.|
-|`btn_filter.png`|An image of glasses for filtering.|
-|`btn_keyboard_hide.png`|An image of a down arrow for uses to hide the visual keyboard.|
-|`btn_message.png`|An image of chat bubbles to initiate a call.|
-|`btn_mute.png` and `icon_muted.png`|Image of a microphone to mute/unmute audio.|
-|`btn_speaker.png` and `icon_speaker.png`|Images of a speaker to turn audio on/off.
-|`btn_switch_camera.png`|An image of a camera and rotational arrows to switch between the two cameras.|
-|`btn_video.png`|An image of a camera to start video.|
-|`btn_voice.png`|An image of an arrow indicating that audio chat is enabled.|
-|`ic_settings_white_24dp.png`|An image of a cog to open the settings window.|
-|`icon_default_avatar.png`|An image of a human silhouette to use as a placeholder for user image.|
-|`ic_launcher.png`|A desktop icon for users to invoke the sample application.|
+|`btn_confirm_white.png`|An image of a white checkbox for confirmation|
+|`btn_end_call.png`|An image of a red telephone for the *hang up* button|
+|`btn_filter.png`|An image of glasses for filtering|
+|`btn_keyboard_hide.png`|An image of a down arrow for uses to hide the visual keyboard|
+|`btn_message.png`|An image of chat bubbles to initiate a call|
+|`btn_mute.png` and `icon_muted.png`|An image of a microphone to mute/unmute audio|
+|`btn_speaker.png` and `icon_speaker.png`|An image of a speaker to turn audio on/off
+|`btn_switch_camera.png`|An image of a camera and rotational arrows to switch between the two cameras|
+|`btn_video.png`|An image of a camera to start video|
+|`btn_voice.png`|An image of an arrow indicating that audio chat is enabled|
+|`ic_settings_white_24dp.png`|An image of a cog to open the settings window|
+|`icon_default_avatar.png`|An image of a human silhouette to use as a placeholder for the user image|
+|`ic_launcher.png`|A desktop icon for users to invoke the sample application|
 
 
 ### Design the User Interface
@@ -217,7 +219,7 @@ Add the icon assets for the user interface to the `/res/drawable-xxxhdpi` folder
 
 #### Create MainActivity UI
 
-`MainActivity` and its layout is defined in */layout/activity_main.xml*. 
+`MainActivity` and its layout are defined in */layout/activity_main.xml*. 
 
 The main aspects of this layout are shown here:
 
@@ -225,14 +227,14 @@ The main aspects of this layout are shown here:
 
 Component|Description
 -----|-----
-`channel_name`|A text box for the channel name.
-`encryption_key`|A text box for the encryption key of the channel.
-`encryption_mode`|A selector to choose the type of encryption.
-`button_join`|A button to begin the channel join process.
+`channel_name`|A text box for the channel name
+`encryption_key`|A text box for the encryption key of the channel
+`encryption_mode`|A selector to choose the type of encryption
+`button_join`|A button to begin the channel join process
 
 #### Create ChatActivity UI
 
-`ChatActivity` and its layout is defined in */layout/activity_chat.xml*. 
+`ChatActivity` and its layout are defined in */layout/activity_chat.xml*. 
 
 The main aspects of this layout are shown here:
 
@@ -240,21 +242,21 @@ The main aspects of this layout are shown here:
 
 Component|Description
 -----|-----
-`small_video_view_dock`|Component to display a small version of the video.
-`channel_name`|A text area for the channel name.
-`bottom_action_end_call`|Used to hang up the call.
-ImageView (unnamed using the `btn_message` image|Used to open the messages window.
-ImageView (unnamed using the `btn_voice` image|Used to start a voice chat.
-`customized_function_id`|Used to switch between device cameras.
-ImageView (unnamed using the `btn_mute` image|Used to mute/unmute the audio.
-ImageView (unnamed using the `btn_filter` image|Used to filter the call.
-ImageView (unnamed using the `btn_keyboard_hide` image|Used to hide the virtual keyboard.
-`msg_content`|Text box to enter text for the message.
-`msg_list`|Container to display the chat conversation.
+`small_video_view_dock`|Displays a small version of the video
+`channel_name`|A text area for the channel name
+`bottom_action_end_call`|Used to hang up the call
+ImageView (unnamed using the `btn_message` image|Used to open the messages window
+ImageView (unnamed using the `btn_voice` image|Used to start a voice chat
+`customized_function_id`|Used to switch between device cameras
+ImageView (unnamed using the `btn_mute` image|Used to mute/unmute the audio
+ImageView (unnamed using the `btn_filter` image|Used to filter the call
+ImageView (unnamed using the `btn_keyboard_hide` image|Used to hide the virtual keyboard
+`msg_content`|Text box to enter text for the message
+`msg_list`|Container to display the chat conversation
 
 #### Create SettingsActivity UI
 
-`SettingsActivity ` and its layout is defined in */layout/activity_settings.xml*. 
+`SettingsActivity ` and its layout are defined in */layout/activity_settings.xml*. 
 
 The main aspects of this layout are shown here:
 
@@ -262,9 +264,9 @@ The main aspects of this layout are shown here:
 
 Component|Description
 -----|-----
-TextView (unnamed using the `label_title_resolution` string|Header title for resolution.
-TextView (unnamed using the `label_title_frame_rate` string|Header title for frame rate.
-`profiles`|List of video profiles (with resolution and frame rate).
+TextView (unnamed using the `label_title_resolution` string|Header title for resolution
+TextView (unnamed using the `label_title_frame_rate` string|Header title for frame rate
+`profiles`|List of video profiles (with resolution and frame rate)
  
 ### Create MainActivity Class
 
@@ -272,8 +274,8 @@ TextView (unnamed using the `label_title_frame_rate` string|Header title for fra
 
 - [Add Import Statements](#add-import-statements)
 - [Initialize the Layout](#initialize-the-layout)
-- [Define Channel Name Text Box](#channel-name-text-box)
-- [Define Encryption Mode Chooser](#encryption-mode-chooser)
+- [Define the Channel Name Text Box](#channel-name-text-box)
+- [Define the Encryption Mode Chooser](#encryption-mode-chooser)
 - [Populate the Options Menu](#options-menu)
 - [Define the Join Button Actions](#join-button)
 - [Define the Settings Button Action](#settings-button)
@@ -292,7 +294,7 @@ import io.agora.openvcall.model.ConstantApp;
 
 #### Initialize the Layout
 
-Initialize the UI with the `activity_main` layout using the `setContentView()` method.
+Initialize the UI with the `activity_main` layout using the `setContentView()` method:
 
 ``` Java
     @Override
@@ -302,7 +304,7 @@ Initialize the UI with the `activity_main` layout using the `setContentView()` m
     }
 ``` 
 
-The `initUIandEvent()` method defines the UI elements and associated event listeners.
+The `initUIandEvent()` method defines the UI elements and associated event listeners:
 
 ``` Java
     @Override
@@ -313,10 +315,9 @@ The `initUIandEvent()` method defines the UI elements and associated event liste
 
 <div style="text-align: right"><a href="#create-mainactivity-class">Back to top of section</a></div>
 
-#### Define Channel Name Text Box
+#### Define the Channel Name Text Box
 
-Define the channel text box, where users will specify the channel, as `v_channel` and add the `beforeTextChanged ` and `onTextChanged ` event listeners using the `v_channel.addTextChangedListener()` method.
-
+Define the channel text box, where users will specify the channel, as `v_channel` and add the `beforeTextChanged ` and `onTextChanged ` event listeners using the `v_channel.addTextChangedListener()` method:
 ``` Java
         EditText v_channel = (EditText) findViewById(R.id.channel_name);
         v_channel.addTextChangedListener(new TextWatcher() {
@@ -340,9 +341,9 @@ Define the channel text box, where users will specify the channel, as `v_channel
 
 <div style="text-align: right"><a href="#create-mainactivity-class">Back to top of section</a></div>
 
-#### Define Encryption Mode Chooser
+#### Define the Encryption Mode Chooser
 
-Define the encryption mode chooser, where users select the encryption mode, as a `Spinner` object, applying the encryption mode value `adapter`. 
+Define the encryption mode chooser, where users select the encryption mode, as a `Spinner` object, applying the encryption mode value `adapter`: 
 
 ``` Java
         Spinner encryptionSpinner = (Spinner) findViewById(R.id.encryption_mode);
@@ -369,7 +370,7 @@ Add the `onItemSelected` event listener using the `encryptionSpinner.setOnItemSe
         
 ``` 
 
-The `encryptionSpinner.setSelection()` method uses the selected encryption mode `vSettings().mEncryptionModeIndex` to set the name and selection of the channel `v_channel`, and the encryption key `v_encryption_key`.
+The `encryptionSpinner.setSelection()` method uses the selected encryption mode `vSettings().mEncryptionModeIndex` to set the name and selection of the channel `v_channel` and the encryption key `v_encryption_key`.
 
 ``` Java
 encryptionSpinner.setSelection(vSettings().mEncryptionModeIndex);
@@ -392,7 +393,7 @@ encryptionSpinner.setSelection(vSettings().mEncryptionModeIndex);
 
 #### Populate the Options Menu
 
-When the options menu is created in the `onCreateOptionsMenu()` method, use `inflater.inflate()` to display the menu. 
+When the options menu is created in the `onCreateOptionsMenu()` method, use `inflater.inflate()` to display the menu: 
 
 ``` Java
     @Override
@@ -403,7 +404,7 @@ When the options menu is created in the `onCreateOptionsMenu()` method, use `inf
     }
 ```
 
-When a menu option is selected in the `onOptionsItemSelected()` method
+When a menu option is selected in the `onOptionsItemSelected()` method:
 
 - Open the settings menu if the settings menu option `action_settings` is selected.
 - Or apply the default selection functionality for that item using `super.onOptionsItemSelected()`.
@@ -428,8 +429,8 @@ When a menu option is selected in the `onOptionsItemSelected()` method
 
 When a user clicks the **Join** button, `onClickJoin()` is invoked. This forwards the user to the channel room, populating:
 
-- The channel name using `vSettings().mChannelName`.
-- The encryption key using `vSettings().mEncryptionKey`.
+- The channel name using `vSettings().mChannelName`
+- The encryption key using `vSettings().mEncryptionKey`
 
 ``` Java
     public void onClickJoin(View view) {
@@ -449,9 +450,9 @@ When a user clicks the **Join** button, `onClickJoin()` is invoked. This forward
 
 The `onClickJoin()` method then starts the chat activity `i`, applying:
 
-- The channel name `channel`.
-- The encryption key `encryption`.
-- The encryption mode selection `vSettings().mEncryptionModeIndex`.
+- The channel name `channel`
+- The encryption key `encryption`
+- The encryption mode selection `vSettings().mEncryptionModeIndex`
 
 ``` Java
         Intent i = new Intent(MainActivity.this, ChatActivity.class);
@@ -466,7 +467,7 @@ The `onClickJoin()` method then starts the chat activity `i`, applying:
 
 #### Define the Settings Button Action
 
-The `forwardToSettings()` method is applied to the **Settings** button, and begins the settings intent `i`. 
+The `forwardToSettings()` method is applied to the **Settings** button and begins the settings intent `i`: 
 
 ``` Java
     public void forwardToSettings() {
@@ -479,18 +480,21 @@ The `forwardToSettings()` method is applied to the **Settings** button, and begi
 
  
 ### Create ChatActivity Class
-- [Set up Imports, Variables, Layout](#set-up-imports,-variables,-layout)
+
+*ChatActivity.java* defines and connects application functionality with the [chat activity UI](#chatactivity).
+
+- [Set Up Imports, Variables, Layout](#set-up-imports,-variables,-layout)
 - [Add Event Listeners](#add-event-listeners)
-- [Set up Local Video View and Channel Settings](#set-up-local-video-view-and-channel-settings)
+- [Set Up Local Video View and Channel Settings](#set-up-local-video-view-and-channel-settings)
 - [Message Functionality](#message-functionality)
 - [Audio and Video Functionality](#audio-and-video-functionality)
 - [UI and Layout Functionality](#ui-and-layout-functionality) 
 - [Main Handlers and Callbacks](#main-handlers-and-callbacks)
 - [Handle Extra Callbacks](#handle-extra-callbacks)
 
-*ChatActivity.java* defines and connects application functionality with the [chat activity UI](#chatactivity).
 
-#### Set up Imports, Variables, Layout
+
+#### Set Up Imports, Variables, Layout
 
 - [Add Import Statements](#add-import-statements)
 - [Define Global Variables](#define-global-variables)
@@ -500,7 +504,7 @@ The `forwardToSettings()` method is applied to the **Settings** button, and begi
 
 `ChatActivity` requires multiple Agora imports.
 
-The `io.agora.openvcall.*` imports define the interface elements and Agora model classes for the app. 
+The `io.agora.openvcall.*` imports define the interface elements and Agora model classes for the app: 
 
 ``` Java
 import io.agora.openvcall.R;
@@ -510,7 +514,7 @@ import io.agora.openvcall.model.Message;
 import io.agora.openvcall.model.User;
 ```
 
-The `io.agora.propeller.*` imports define the Agora constants and access to Agora data processing.
+The `io.agora.propeller.*` imports define the Agora constants and access to Agora data processing:
 
 ``` Java
 import io.agora.propeller.Constant;
@@ -520,7 +524,7 @@ import io.agora.propeller.preprocessing.VideoPreProcessing;
 import io.agora.propeller.ui.RtlLinearLayoutManager;
 ```
 
-The `io.agora.rtc.*` import provides access to the Agora RTC engines and video canvas.
+The `io.agora.rtc.*` import provides access to the Agora RTC engines and video canvas:
 
 ``` Java
 import io.agora.rtc.IRtcEngineEventHandler;
@@ -532,7 +536,7 @@ import io.agora.rtc.video.VideoCanvas;
 
 ##### Define Global Variables
 
-At the beginning of the class, the global variables are defined.
+Define the global variables at the beginning of the class:
 
 
 ``` Java
@@ -557,27 +561,27 @@ At the beginning of the class, the global variables are defined.
 
 Variable name(s)|Description
 ----|----
-`LAYOUT_TYPE_DEFAULT` and `LAYOUT_TYPE_SMALL `|The available layout types for the app.
-`log`|Used for logging and debugging.
-`mUidsList`|Manages list of users.
-`mLayoutType`|The current layout type.
-`mGridVideoViewContainer`|Container for the video views.
-`mSmallVideoViewDock`|Container for the small video view.
-`mVideoMuted`|The current video mute state.
-`mAudioMuted`|The current audio mute state.
-`mAudioRouting`|The current audio route.
-`mIsLandscape`|The current orientation of the device.
-`InChannelMessageListAdapter`|Container for the channel messages.
-`mMsgList`|The list of message data.
-`mDataStreamId`|The channel stream ID.
-`mVideoPreProcessing`|The video pre-processor.
-`mSmallVideoViewAdapter`|The adapter for the small video view.
+`LAYOUT_TYPE_DEFAULT` and `LAYOUT_TYPE_SMALL `|The available layout types for the app
+`log`|Used for logging and debugging
+`mUidsList`|Manages list of users
+`mLayoutType`|The current layout type
+`mGridVideoViewContainer`|Container for the video views
+`mSmallVideoViewDock`|Container for the small video view
+`mVideoMuted`|The current video mute state
+`mAudioMuted`|The current audio mute state
+`mAudioRouting`|The current audio route
+`mIsLandscape`|The current orientation of the device
+`InChannelMessageListAdapter`|Container for the channel messages
+`mMsgList`|The list of message data
+`mDataStreamId`|The channel stream ID
+`mVideoPreProcessing`|The video preprocessor
+`mSmallVideoViewAdapter`|The adapter for the small video view
 
 <div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 ##### Initialize the Layout
 
-Initialize the UI with the `activity_chat` layout using the `setContentView()` method.
+Initialize the UI with the `activity_chat` layout using the `setContentView()` method:
 
 ``` Java
     @Override
@@ -593,7 +597,7 @@ Initialize the UI with the `activity_chat` layout using the `setContentView()` m
 - [Grid Video View Event Listener](#grid-video-view-event-listener)
 
 
-The `initUIandEvent()` method defines the UI elements and associated event listeners.
+The `initUIandEvent()` method defines the UI elements and associated event listeners:
 
 ``` Java
     @Override
@@ -604,7 +608,7 @@ The `initUIandEvent()` method defines the UI elements and associated event liste
 
 ##### Add Global Event Listener and Set Engine Configuration
 
-Add an event listener for the chat activity using `event().addEventHandler`. 
+Add an event listener for the chat activity using `event().addEventHandler`: 
 
 ``` Java
         event().addEventHandler(this);
@@ -612,9 +616,9 @@ Add an event listener for the chat activity using `event().addEventHandler`.
 
 Using the the intent `i`, define:
 
-- The channel name `channelName`.
-- Encryption key `encryptionKey`.
-- Encryption mode `encryptionMode`.
+- The channel name `channelName`
+- Encryption key `encryptionKey`
+- Encryption mode `encryptionMode`
 
 ``` Java
         Intent i = getIntent();
@@ -625,7 +629,7 @@ Using the the intent `i`, define:
         final String encryptionMode = getIntent().getStringExtra(ConstantApp.ACTION_KEY_ENCRYPTION_MODE);
 ```
 
-Add the encryption key and encryption mode to the configuration of the Agora engine using `doConfigEngine()`.
+Add the encryption key and encryption mode to the configuration of the Agora engine using `doConfigEngine()`:
 
 ``` Java
         doConfigEngine(encryptionKey, encryptionMode);
@@ -663,14 +667,14 @@ Add an `onItemDoubleClick` listener to each item in the grid video view containe
 
 <div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
-#### Set up Local Video View and Channel Settings
+#### Set Up Local Video View and Channel Settings
 
-- [Set up Local Video View](#set-up-local-video-view)
-- [Set Channel name Layout Flags and Parameters](#set-channel-name-layout-flags-and-parameters)
+- [Set Up Local Video View](#set-up-local-video-view)
+- [Set Channel Name Layout Flags and Parameters](#set-channel-name-layout-flags-and-parameters)
 
-##### Set up Local Video View
+##### Set Up Local Video View
 
-Set the local video view `surfaceV` using the `setupLocalVideo()` method, and initialize the grid video view container using `mGridVideoViewContainer.initViewContainer()` with the user list `mUidsList`.
+Set the local video view `surfaceV` using the `setupLocalVideo()` method, and initialize the grid video view container using `mGridVideoViewContainer.initViewContainer()` with the user list `mUidsList`:
 
 ``` Java
         SurfaceView surfaceV = RtcEngine.CreateRendererView(getApplicationContext());
@@ -683,7 +687,7 @@ Set the local video view `surfaceV` using the `setupLocalVideo()` method, and in
         mGridVideoViewContainer.initViewContainer(this, 0, mUidsList, mIsLandscape); // first is now full view
 ```
 
-Apply `surfaceV` to the preview using `worker().preview()` and join the channel using `worker().joinChannel()`.
+Apply `surfaceV` to the preview using `worker().preview()` and join the channel using `worker().joinChannel()`:
 
 ``` Java
         worker().preview(true, surfaceV, 0);
@@ -693,7 +697,7 @@ Apply `surfaceV` to the preview using `worker().preview()` and join the channel 
 
 <div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
-##### Set Channel name Layout Flags and Parameters
+##### Set Channel Name Layout Flags and Parameters
 
 Set the channel name `channelName` using `textChannelName.setText()` and set the layout flags and audio stream using `optional()`. Read more about the `optional()` method for this activity [here](#set-layout-flags-and-audio-stream).
 
@@ -767,7 +771,7 @@ Initialize the message list view with the message adapter `mMsgAdapter` and vert
 
 ##### Message Change Handler
 
-When a message is added, the `notifyMessageChanged()` method is invoked. The new message `msg` will be added to the message list using `mMsgList.add()`. If the list has more than 16 messages, the first message in the list will be removed using `mMsgList.remove()`.
+When a message is added, the `notifyMessageChanged()` method is invoked. The new message `msg` is added to the message list using `mMsgList.add()`. If the list has more than 16 messages, the first message in the list is removed using `mMsgList.remove()`.
 
 The `notifyMessageChanged()` method completes by notifying the message adapter that the data has changed using `mMsgAdapter.notifyDataSetChanged()`.
 
@@ -794,7 +798,7 @@ The `notifyMessageChanged()` method completes by notifying the message adapter t
 
 The `sendChannelMsg()` method passes the encoded message `encodedMsg` into the Agora SDK engine `rtcEngine` using `rtcEngine.sendStreamMessage()`. 
 
-Before sending the message to the SDK, ensure the stream has been created. If the stream needs to be created, call the `rtcEngine.createDataStream()` method. If the stream creation fails, add the error message to the log using `log.warn()` and `showLongToast()`.
+Before sending the message to the SDK, ensure the stream has been created. To create the stream, call the `rtcEngine.createDataStream()` method. If the stream creation fails, add the error message to the log using `log.warn()` and `showLongToast()`.
 
 ``` Java
     private void sendChannelMsg(String msgStr) {
@@ -883,7 +887,7 @@ If a send message action is received, check if the message is empty using `TextU
 - [Configure the Agora Engine](#configure-the-agora-engine)
 - [Switch Camera and Audio Routing](#switch-camera-and-audio-routing)
 - [Leave Channel and End Call](#leave-channel-and-end-call)
-- [Video Pre-processing](#video-pre-processing)
+- [Video Preprocessing](#video-pre-processing)
 - [Enable / Disable Video](#enable-disable-video)
 - [Mute / Unmute Audio](#mute-unmute-audio)
 - [Render Remote Video UI](#render-remote-video-ui)
@@ -891,7 +895,7 @@ If a send message action is received, check if the message is empty using `TextU
 
 ##### Set Layout Flags and Audio Stream
 
-The `optional()` method adds layout flags to the windows using `getWindow().addFlags()` and sets the stream's volume control using `setVolumeControlStream()`.
+The `optional()` method adds layout flags to the windows using `getWindow().addFlags()` and sets the stream's volume control using `setVolumeControlStream()`:
 
 ``` Java
     private void optional() {
@@ -930,7 +934,7 @@ If the profile index an available video profile provided by the Agora SDK `Const
 
 ##### Configure the Agora Engine
 
-The `doConfigEngine()` method adds the current video profile `vProfile`, encryption key `encryptionKey`, and encryption mode `encryptionMode` to the Agora engine configuration using `worker().configEngine()`.
+The `doConfigEngine()` method adds the current video profile `vProfile`, encryption key `encryptionKey`, and encryption mode `encryptionMode` to the Agora engine configuration using `worker().configEngine()`:
 
 ``` Java
     private void doConfigEngine(String encryptionKey, String encryptionMode) {
@@ -993,7 +997,7 @@ Once the ChatActivity view is removed and destroyed `deInitUIandEvent()`:
     }
 ```
 
-The `doLeaveChannel()` method applies the Agora SDK's `worker().leaveChannel()` and `worker().preview()` methods.
+The `doLeaveChannel()` method applies the Agora SDK `worker().leaveChannel()` and `worker().preview()` methods:
 
 ``` Java
     private void doLeaveChannel() {
@@ -1002,7 +1006,7 @@ The `doLeaveChannel()` method applies the Agora SDK's `worker().leaveChannel()` 
     }
 ```
 
-The `onEndCallClicked()` method invokes the activity's `finish()` method to dismiss any objects the activity manages.
+The `onEndCallClicked()` method invokes the activity's `finish()` method to dismiss any objects the activity manages:
 
 ``` Java
     public void onEndCallClicked(View view) {
@@ -1014,23 +1018,23 @@ The `onEndCallClicked()` method invokes the activity's `finish()` method to dism
 
 <div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
-##### Video Pre-processing
+##### Video Preprocessing
 
-The `onBtnNClicked()` method enables video pre-processing `mVideoPreProcessing` and applies a tag and filter to the view `iv`.
+The `onBtnNClicked()` method enables video preprocessing `mVideoPreProcessing` and applies a tag and filter to the view `iv`.
 
-**If the view has pre-processing enabled:**
+**If the view has preprocessing enabled:**
 
-- Disable pre-processing by passing `false` into `mVideoPreProcessing.enablePreProcessing()`.
-- set the tag to `null` using `iv.setTag`.
+- Disable preprocessing by passing `false` into `mVideoPreProcessing.enablePreProcessing()`.
+- Set the tag to `null` using `iv.setTag`.
 - Clear the color filter using `iv.clearColorFilter`.
 
-**If the view does not have pre-processing enabled:**
+**If the view does not have preprocessing enabled:**
 
-- Enable pre-processing by passing `true` into `mVideoPreProcessing.enablePreProcessing()`.
-- Set the tag to `true` using `iv.setTag`
+- Enable preprocessing by passing `true` into `mVideoPreProcessing.enablePreProcessing()`,
+- Set the tag to `true` using `iv.setTag`, and
 - Add a color filter using `iv.setColorFilter`.
 
-**Note:** The view must be casted into an image view `iv` to apply tags and filters.
+**Note:** To apply tags and filters, cast the view into an image view `iv` .
 
 ``` Java
     public void onBtnNClicked(View view) {
@@ -1058,9 +1062,9 @@ The `onBtnNClicked()` method enables video pre-processing `mVideoPreProcessing` 
 
 The `onVoiceChatClicked()` method mutes/unmutes the video. It first ensures that the user list is populated using `mUidsList.size()` and the local view `surfaceV` has been added to the stage.
 
-The global mute variable `mVideoMuted` and the mute icon is updated in the UI, using `iv.setImageResource`.
+The global mute variable `mVideoMuted` and the mute icon are updated in the UI, using `iv.setImageResource`.
 
-Update the Agora RTC engine and layout according to the mute state.
+Update the Agora RTC engine and layout according to the mute state:
 
 **If the video is muted:**
 
@@ -1119,7 +1123,7 @@ The `onVoiceMuteClicked()` method first checks if the user list is valid using `
 
 **Note:** The `mAudioMuted` global variable is updated prior to passing it into the RTC engine.
 
-If the audio is muted, a color filter is set using `iv.setColorFilter()` or cleared using `iv.clearColorFilter()` if the audio is not muted.
+If the audio is muted, a color filter is set using `iv.setColorFilter()`. If the audio is not muted, the color filter is cleared using `iv.clearColorFilter()`. 
 
 ``` Java
     public void onVoiceMuteClicked(View view) {
@@ -1145,7 +1149,7 @@ If the audio is muted, a color filter is set using `iv.setColorFilter()` or clea
 
 ##### Render Remote Video UI
 
-The `onFirstRemoteVideoDecoded()` method renders the UI using `doRenderRemoteUi()` after the first remote video decode is complete.
+The `onFirstRemoteVideoDecoded()` method renders the UI using `doRenderRemoteUi()` after the first remote video decode is complete:
 
 ``` Java
     @Override
@@ -1156,7 +1160,7 @@ The `onFirstRemoteVideoDecoded()` method renders the UI using `doRenderRemoteUi(
 
 The `doRenderRemoteUi()` method first checks if the render is finishing using `isFinishing()` and that the user `uid` exists in the user list using `mUidsList.containsKey()`.
 
-The surface view `surfaceV` is created and bound to the user `uid`, using `mUidsList.put()`.
+The surface view `surfaceV` is created and bound to the user `uid` using `mUidsList.put()`.
 
 The Agora RTC engine `rtcEngine()` sets up the remove video using `rtcEngine().setupRemoteVideo()`.
 
@@ -1213,7 +1217,7 @@ The `requestRemoteStreamType()` method is intended to retrieve the remote stream
 <div style="text-align: right"><a href="#create-chatactivity-class">Back to top of section</a></div>
 
 
-####UI and Layout Functionality
+#### UI and Layout Functionality
 
 - [Get, Show, and Hide the Local View](#get,-show,-and-hide-the-local-view)
 - [Reset UI for Enabled / Disabled Video](#reset-ui-for-enabled-disabled-video)
@@ -1224,7 +1228,7 @@ The `requestRemoteStreamType()` method is intended to retrieve the remote stream
 
 ##### Get, Show, and Hide the Local View
 
-The `getLocalView()` method returns the current local view for the user `mUid` using entry.getValue(). If no local view is found, the method returns `null`.
+The `getLocalView()` method returns the current local view for the user `mUid` using `entry.getValue()`. If no local view is found, the method returns `null`.
 
 ``` Java
     private SurfaceView getLocalView() {
@@ -1238,7 +1242,7 @@ The `getLocalView()` method returns the current local view for the user `mUid` u
     }
 ```
 
-The `hideLocalView()` method hides/unhides the target view for the user `uid` using `doHideTargetView()`.
+The `hideLocalView()` method hides/unhides the target view for the user `uid` using `doHideTargetView()`:
 
 ``` Java
     private void hideLocalView(boolean hide) {
@@ -1249,9 +1253,9 @@ The `hideLocalView()` method hides/unhides the target view for the user `uid` us
 
 The `doHideTargetView()` method updates the status to muted `UserStatusData.VIDEO_MUTED` or the Agora default `UserStatusData.DEFAULT_STATUS` for the user `targetUid` using `status.put()`.
 
-The method will trigger the UI changed event for the grid video view container `mGridVideoViewContainer` using `mGridVideoViewContainer.notifyUiChanged()`.
+The method triggers the UI changed event for the grid video view container `mGridVideoViewContainer` using `mGridVideoViewContainer.notifyUiChanged()`.
 
-The event will use the specified `targetUid` unless the current layout is using the setting `LAYOUT_TYPE_SMALL` and the first user in the `mGridVideoViewContainer` is not the specified target user `targetUid`.
+The event uses the specified `targetUid` unless the current layout is using the setting `LAYOUT_TYPE_SMALL` and the first user in the `mGridVideoViewContainer` is not the specified target user `targetUid`.
 
 ``` Java
     private void doHideTargetView(int targetUid, boolean hide) {
@@ -1286,7 +1290,7 @@ The `resetToVideoEnabledUI()` and `resetToVideoDisabledUI()` methods are almost 
 The difference between the methods is the icon used in `iv.setImageResource()`.
 
 - The `resetToVideoEnabledUI()` method uses the `btn_switch_camera` icon, allowing the user to switch between cameras for the video.
-- The `resetToVideoDisabledUI()` method uses the `btn_speaker` icon, allowing the user to mute / umute the audio.
+- The `resetToVideoDisabledUI()` method uses the `btn_speaker` icon, allowing the user to mute/unmute the audio.
 
 ``` Java
     private void resetToVideoEnabledUI() {
@@ -1310,7 +1314,7 @@ The difference between the methods is the icon used in `iv.setImageResource()`.
 
 ##### Remove Remote UI
 
-The `doRemoveRemoteUi()` method removes a remote user `uid` from the user list `mUidsList` using `mUidsList.remove()` and updates the the layout type `mLayoutType`. If the user list is empty after the user is removed, don't update the layout.
+The `doRemoveRemoteUi()` method removes a remote user `uid` from the user list `mUidsList` using `mUidsList.remove()` and updates the layout type `mLayoutType`. If the user list is empty after the user is removed, do not update the layout.
 
 ``` Java
     private void doRemoveRemoteUi(final int uid) {
@@ -1405,7 +1409,7 @@ Complete the method by requesting the remote stream time using `requestRemoteStr
 
 ##### Bind to Small Video View
 
-The `bindToSmallVideoView()` method sets the small video view layout.
+The `bindToSmallVideoView()` method sets the small video view layout:
 
 ``` Java
     private void bindToSmallVideoView(int exceptUid) {
@@ -1413,7 +1417,7 @@ The `bindToSmallVideoView()` method sets the small video view layout.
     }
 ```
 
-1. Check of the small video view dock `mSmallVideoViewDock` exists using `mSmallVideoViewDock == null`. If it does not exist yet, create it using `stub.inflate()`.
+1. Verify that the small video view dock `mSmallVideoViewDock` exists using `mSmallVideoViewDock == null`. If it does not exist, create it using `stub.inflate()`.
 
 	``` Java
         if (mSmallVideoViewDock == null) {
@@ -1422,11 +1426,11 @@ The `bindToSmallVideoView()` method sets the small video view layout.
         }
 	```
 
-2. Check if the small video view adapter `mSmallVideoViewAdapter` exists using `mSmallVideoViewAdapter == null`. If it does not exist yet, create it using `new SmallVideoViewAdapter()`.
+2. Verify that the small video view adapter `mSmallVideoViewAdapter` exists using `mSmallVideoViewAdapter == null`. If it does not exist, create it using `new SmallVideoViewAdapter()`.
 
-	Ensure that the double-click event listener `onItemDoubleClick` is added, which will allow the user to switch the layout to the default video view using `switchToDefaultVideoView()`.
+	Ensure that the double-click event listener `onItemDoubleClick` is added, which allows the user to switch the layout to the default video view using `switchToDefaultVideoView()`.
 
-	**Note:** The small video view container `recycler` needs to be set to a fixed size using `recycler.setHasFixedSize()`.
+	**Note:**  Set the small video view container `recycler` to a fixed size using `recycler.setHasFixedSize()`.
 
 	``` Java
         RecyclerView recycler = (RecyclerView) findViewById(R.id.small_video_view_container);
@@ -1446,7 +1450,7 @@ The `bindToSmallVideoView()` method sets the small video view layout.
         recycler.setHasFixedSize(true);
 	```
 
-3. Check if the call is a two-way video call and set the layout manager using `recycler.setLayoutManager()`.
+3. Check if the call is a two-way video call and set the layout manager using `recycler.setLayoutManager()`:
 
 	- If true, use the RTL linear layout manager `RtlLinearLayoutManager`.
 	- If false, use the linear layout manager `LinearLayoutManager`.
@@ -1465,7 +1469,7 @@ The `bindToSmallVideoView()` method sets the small video view layout.
         }
 	```
 
-4. Apply settings to the view `recycler`.
+4. Apply settings to the view `recycler`:
 
 	- Add the small video view decoration using `SmallVideoViewDecoration()`.
 	- Set the small video view adapter using `recycler.setAdapter()`.
@@ -1480,7 +1484,7 @@ The `bindToSmallVideoView()` method sets the small video view layout.
         recycler.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_AUTO);
 	```
 	
-5. Check if the small video view adapter `mSmallVideoViewAdapter` was created earlier using `!create`. If it was not previously created, set the current adapter's local user `config().mUid` using `mSmallVideoViewAdapter.setLocalUid` and trigger the adapter's UI changed event using `mSmallVideoViewAdapter.notifyUiChanged()`.
+5. Verify that the small video view adapter `mSmallVideoViewAdapter` exists using `!create`. If it does not exist, set the current adapter's local user `config().mUid` using `mSmallVideoViewAdapter.setLocalUid` and trigger the adapter's UI changed event using `mSmallVideoViewAdapter.notifyUiChanged()`.
 
 	``` Java
         if (!create) {
@@ -1488,7 +1492,7 @@ The `bindToSmallVideoView()` method sets the small video view layout.
             mSmallVideoViewAdapter.notifyUiChanged(mUidsList, exceptUid, null, null);
         }
 	```
-6. Complete the method by making the view `recycler` and small video view dock `mSmallVideoViewDock` visible.
+6. Complete the method by making the view `recycler` and small video view dock `mSmallVideoViewDock` visible:
 
 	- Use `recycler.setVisibility()` to set the view to visible.
 	- Use `mSmallVideoViewDock.setVisibility()` to set the dock to visible.
@@ -1538,7 +1542,7 @@ The `onJoinChannelSuccess()` method first checks if the render is finishing usin
 
 ##### User Offline Handler
 
-The `onUserOffline()` method removes the remote UI for the user `uid` using `doRemoveRemoteUi()`.
+The `onUserOffline()` method removes the remote UI for the user `uid` using `doRemoveRemoteUi()`:
 
 ``` Java
     @Override
@@ -1551,7 +1555,7 @@ The `onUserOffline()` method removes the remote UI for the user `uid` using `doR
 
 ##### Headset Plugged Notification
 
-The `mSmallVideoViewAdapter()` method updates the audio routing `mAudioRouting`. If the video isn't muted, check if the audio route is using the speakerphone using `mAudioRouting == 3`.
+The `mSmallVideoViewAdapter()` method updates the audio routing `mAudioRouting`. If the video is not muted, check if the audio route is using the speakerphone using `mAudioRouting == 3`:
 
 - If the speakerphone is used, set the color filter for the image view using `iv.setColorFilter()`. 
 - If the speakerphone is not used, clear the color filter for the image view using `iv.clearColorFilter()`.
@@ -1579,12 +1583,12 @@ The `mSmallVideoViewAdapter()` method updates the audio routing `mAudioRouting`.
 
 ##### Configuration Changed Event
 
-The `onConfigurationChanged()` method adds layout changes to its superclass.
+The `onConfigurationChanged()` method adds layout changes to its superclass:
 
 - If the layout type is set to `LAYOUT_TYPE_DEFAULT`, the layout is changed to the default layout type using `switchToDefaultVideoView()`.
-- Otherwise the layout type is set to the small video view using `switchToSmallVideoView()`.
+- Otherwise, the layout type is set to the small video view using `switchToSmallVideoView()`.
 	
-	**Note:** The small video view adapter `mSmallVideoViewAdapter` must exist before setting the layout to the small video layout
+	**Note:** Before setting the layout to the small video layout, verify that the small video view adapter `mSmallVideoViewAdapter` exists. 
 
 ``` Java
     @Override
@@ -1612,7 +1616,7 @@ The `onConfigurationChanged()` method adds layout changes to its superclass.
 - [Agora Media Error Event](#agora-media-error-event)
 - [Audio Route Changed Event](#audio-route-changed-event)
 
-The `onExtraCallback()` method handles the remaining callbacks for `ChatActivity` using `doHandleExtraCallback()`. 
+The `onExtraCallback()` method handles the remaining callbacks for `ChatActivity` using `doHandleExtraCallback()`: 
 
 ``` Java
     @Override
@@ -1635,14 +1639,14 @@ The `doHandleExtraCallback()` method checks between the following event types:
 
 Event Name|Description
 ----|----
-[`EVENT_TYPE_ON_USER_AUDIO_MUTED`](#mute-unmute-user-audio-event)|Triggers when a user's audio is muted.
-[`EVENT_TYPE_ON_USER_VIDEO_MUTED`](#mute-unmute-user-video-event)|Triggers when a user's video is muted.
-[`EVENT_TYPE_ON_USER_VIDEO_STATS`](#user-video-stats-event)|Triggers when a user's video stats change.
-[`EVENT_TYPE_ON_SPEAKER_STATS`](#speaker-stats-event)|Triggers when the speaker's stats change.
-[`EVENT_TYPE_ON_APP_ERROR`](#app-error-event)|Triggers when the app generates an error.
-[`EVENT_TYPE_ON_DATA_CHANNEL_MSG`](#data-channel-message-event)|Triggers when a channel message is received.
-[`EVENT_TYPE_ON_AGORA_MEDIA_ERROR`](#agora-media-error-event)|Triggers when there is an Agora media error.
-[`EVENT_TYPE_ON_AUDIO_ROUTE_CHANGED`](#audio-route-changed-event)|Triggers when the audio route changes.
+[`EVENT_TYPE_ON_USER_AUDIO_MUTED`](#mute-unmute-user-audio-event)|Triggers when a user's audio is muted
+[`EVENT_TYPE_ON_USER_VIDEO_MUTED`](#mute-unmute-user-video-event)|Triggers when a user's video is muted
+[`EVENT_TYPE_ON_USER_VIDEO_STATS`](#user-video-stats-event)|Triggers when a user's video stats change
+[`EVENT_TYPE_ON_SPEAKER_STATS`](#speaker-stats-event)|Triggers when the speaker's stats change
+[`EVENT_TYPE_ON_APP_ERROR`](#app-error-event)|Triggers when the app generates an error
+[`EVENT_TYPE_ON_DATA_CHANNEL_MSG`](#data-channel-message-event)|Triggers when a channel message is received
+[`EVENT_TYPE_ON_AGORA_MEDIA_ERROR`](#agora-media-error-event)|Triggers when there is an Agora media error
+[`EVENT_TYPE_ON_AUDIO_ROUTE_CHANGED`](#audio-route-changed-event)|Triggers when the audio route changes
 
 
 ``` Java
@@ -1683,7 +1687,7 @@ Event Name|Description
 
 ##### Mute / Unmute User Audio Event
 
-The `EVENT_TYPE_ON_USER_AUDIO_MUTED` event checks if the stage is using the default layout `LAYOUT_TYPE_DEFAULT`. If it is, the status for the user `peerUid` is set to muted `UserStatusData.AUDIO_MUTED` or a default user status `UserStatusData.DEFAULT_STATUS` using `status.put()`.
+The event `EVENT_TYPE_ON_USER_AUDIO_MUTED` checks if the stage is using the default layout `LAYOUT_TYPE_DEFAULT`. If it is, the status for the user `peerUid` is set to muted `UserStatusData.AUDIO_MUTED` or a default user status `UserStatusData.DEFAULT_STATUS` using `status.put()`.
 
 The UI changed event for the grid video container `mGridVideoViewContainer` is then triggered using `mGridVideoViewContainer.notifyUiChanged()`.
 
@@ -1703,7 +1707,7 @@ The UI changed event for the grid video container `mGridVideoViewContainer` is t
 
 ###### Mute / Unmute User Video Event
 
-The `EVENT_TYPE_ON_USER_VIDEO_MUTED` event hides the target view for the user `peerUid` using `doHideTargetView`.
+The `EVENT_TYPE_ON_USER_VIDEO_MUTED` event hides the target view for the user `peerUid` using `doHideTargetView`:
 
 ``` Java
             case AGEventHandler.EVENT_TYPE_ON_USER_VIDEO_MUTED:
@@ -1717,11 +1721,11 @@ The `EVENT_TYPE_ON_USER_VIDEO_MUTED` event hides the target view for the user `p
 
 ##### User Video Stats Event
 
-The `EVENT_TYPE_ON_USER_VIDEO_STATS` event adds or removes video statistics information.
+The `EVENT_TYPE_ON_USER_VIDEO_STATS` event adds or removes video statistics information:
 
-- If `Constant.SHOW_VIDEO_INFO` is true, and the layout type `mLayoutType` is set to `LAYOUT_TYPE_DEFAULT`. The statistics are added to the grid video view container `mGridVideoViewContainer` using `addVideoInfo()`. 
+- If `Constant.SHOW_VIDEO_INFO` is true, and the layout type `mLayoutType` is set to `LAYOUT_TYPE_DEFAULT`, the video statistics are added to the grid video view container `mGridVideoViewContainer` using `addVideoInfo()`. 
 
-- If `Constant.SHOW_VIDEO_INFO` is false, the video info is removed using `mGridVideoViewContainer.cleanVideoInfo()`.
+- If `Constant.SHOW_VIDEO_INFO` is false, the video statistics are removed using `mGridVideoViewContainer.cleanVideoInfo()`.
 
 ``` Java
             case AGEventHandler.EVENT_TYPE_ON_USER_VIDEO_STATS:
@@ -1753,11 +1757,13 @@ The `EVENT_TYPE_ON_USER_VIDEO_STATS` event adds or removes video statistics info
 
 ##### Speaker Stats Event
 
-The `EVENT_TYPE_ON_SPEAKER_STATS` event updates the speaker statistics info.
+The `EVENT_TYPE_ON_SPEAKER_STATS` event updates the speaker statistics information.
 
-Check if the user is local using `infos.length == 1 && infos[0].uid == 0`. If true, no updates are made.
+Check if the user is local using `infos.length == 1 && infos[0].uid == 0`:
 
-The the user is not local and the layout type `mLayoutType` is the default layout type `LAYOUT_TYPE_DEFAULT`, update the audio volume info for each user `peerUid` using `volume.put()`.
+- If the user is local, no updates are made.
+
+- If the user is not local and the layout type `mLayoutType` is the default layout type `LAYOUT_TYPE_DEFAULT`, update the audio volume information for each user `peerUid` using `volume.put()`.
 
 Complete the event update by triggering the UI change event `notifyUiChanged()` for the grid video view container`mGridVideoViewContainer`.
 
@@ -1804,7 +1810,7 @@ The `EVENT_TYPE_ON_APP_ERROR` event checks for app errors. If there is no networ
 
 ##### Data Channel Message Event
 
-The `EVENT_TYPE_ON_DATA_CHANNEL_MSG` event sends a notification that the message changed by the user `peerUid` using `notifyMessageChanged()`
+The `EVENT_TYPE_ON_DATA_CHANNEL_MSG` event sends a notification that the message changed by the user `peerUid` using `notifyMessageChanged()`:
 
 ``` Java
             case AGEventHandler.EVENT_TYPE_ON_DATA_CHANNEL_MSG:
@@ -1818,7 +1824,7 @@ The `EVENT_TYPE_ON_DATA_CHANNEL_MSG` event sends a notification that the message
 
 ##### Agora Media Error Event
 
-The `EVENT_TYPE_ON_AGORA_MEDIA_ERROR` event sends a notification of the Agora `error` and `description` using `notifyMessageChanged()`.
+The `EVENT_TYPE_ON_AGORA_MEDIA_ERROR` event sends a notification of the Agora `error` and `description` using `notifyMessageChanged()`:
 
 ``` Java
             case AGEventHandler.EVENT_TYPE_ON_AGORA_MEDIA_ERROR: 
@@ -1832,7 +1838,7 @@ The `EVENT_TYPE_ON_AGORA_MEDIA_ERROR` event sends a notification of the Agora `e
 
 ##### Audio Route Changed Event
 
-The `EVENT_TYPE_ON_AUDIO_ROUTE_CHANGED` event sends a notification that the headset is unplugged using `notifyHeadsetPlugged()`.
+The `EVENT_TYPE_ON_AUDIO_ROUTE_CHANGED` event sends a notification that the headset is unplugged using `notifyHeadsetPlugged()`:
 
 ``` Java
             case AGEventHandler.EVENT_TYPE_ON_AUDIO_ROUTE_CHANGED:
@@ -1847,12 +1853,13 @@ The `EVENT_TYPE_ON_AUDIO_ROUTE_CHANGED` event sends a notification that the head
 
 ### Create SettingsActivity
 
+*SettingsActivity.java* defines and connects application functionality with the [settings activity UI](#settingsactivity).
+
 - [Add Import Statements](#add-import-statements)
 - [Initialize the Layout](#initialize-the-layout)
 - [Create Settings Menu and Event Listener](#create-settings-menu-and-event-listener)
 - [Save Profile](#save-profile)
 
-*SettingsActivity.java* defines and connects application functionality with the [settings activity UI](#settingsactivity).
 
 #### Add Import Statements
 
@@ -1862,11 +1869,11 @@ The `R` import defines the interface for the app. The `ConstantApp` import defin
 import io.agora.openvcall.R;
 import io.agora.openvcall.model.ConstantApp;
 ```
-<div style="text-align: right"><a href="#create-settingsactivity-class">Back to "Create SettingsActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-settingsactivity-class">Back to top of section</a></div>
 
 #### Initialize the Layout
 
-Initialize the UI with the `activity_settings` layout using the `setContentView()` method and begin the `initUI()` process.
+Initialize the UI with the `activity_settings` layout using the `setContentView()` method and begin the `initUI()` process:
 
 ``` Java
     @Override
@@ -1883,8 +1890,8 @@ The `initUi()` method sets the preferences `pref`, video profiles `v_profiles`.
 The video profiles:
 
 - Are set to a fixed size using `v_profiles.setHasFixedSize()`.
-- Sets the video profile adapter `mVideoProfileAdapter` with stable IDs using `mVideoProfileAdapter.setHasStableIds()` and `v_profiles.setAdapter()`
-- Sets a layout manager with a vertical orientation `LinearLayoutManager.VERTICAL` using `v_profiles.setLayoutManager()`
+- Set the video profile adapter `mVideoProfileAdapter` with stable IDs using `mVideoProfileAdapter.setHasStableIds()` and `v_profiles.setAdapter()`.
+- Set a layout manager with a vertical orientation `LinearLayoutManager.VERTICAL` using `v_profiles.setLayoutManager()`.
 
 ``` Java
     private VideoProfileAdapter mVideoProfileAdapter;
@@ -1905,11 +1912,11 @@ The video profiles:
         v_profiles.setAdapter(mVideoProfileAdapter);
     }
 ```
-<div style="text-align: right"><a href="#create-settingsactivity-class">Back to "Create SettingsActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-settingsactivity-class">Back to top of section</a></div>
 
 #### Create Settings Menu and Event Listener
 
-The `onCreateOptionsMenu()` method applies the settings UI elements `R.menu.menu_settings` to the activity using `inflater.inflate()`.
+The `onCreateOptionsMenu()` method applies the settings UI elements `R.menu.menu_settings` to the activity using `inflater.inflate()`:
 
 ``` Java
     @Override
@@ -1920,7 +1927,7 @@ The `onCreateOptionsMenu()` method applies the settings UI elements `R.menu.menu
     }
 ```
 
-The `onOptionsItemSelected()` method handles the selection event for the settings menu.
+The `onOptionsItemSelected()` method handles the selection event for the settings menu:
 
 - If the confirm button `R.id.confirm` is selected, save the profile using `doSaveProfile()` and invoke the back button pressed event using `onBackPressed()`.
 - If the confirm button is not selected, invoke the menu item's default functionality using `super.onOptionsItemSelected()`.
@@ -1941,13 +1948,13 @@ The `onOptionsItemSelected()` method handles the selection event for the setting
         }
     }
 ```
-<div style="text-align: right"><a href="#create-settingsactivity-class">Back to "Create SettingsActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-settingsactivity-class">Back to top of section</a></div>
 
 #### Save Profile
 
 The `doSaveProfile()` method saves the app preferences into the preferences editor. 
 
-The profile index `profileIndex` is the information that needs to be saved.
+The profile index `profileIndex` is the information that needs to be saved:
 
 - Retrieve the profile index from the video profile adapter using `mVideoProfileAdapter.getSelected()`.
 - Apply the profile index into the preferences editor using `editor.putInt()` and `editor.apply()`.
@@ -1964,19 +1971,19 @@ The profile index `profileIndex` is the information that needs to be saved.
 }
 ```
 
-<div style="text-align: right"><a href="#create-settingsactivity-class">Back to "Create SettingsActivity Class"</a></div>
+<div style="text-align: right"><a href="#create-settingsactivity-class">Back to top of section</a></div>
 
 ## Resources
-- You can find full API documentation in the [Document Center](https://docs.agora.io/en/)
-- You can file bugs about this sample [here](https://github.com/AgoraIO/OpenVideoCall-Android/issues)
+- Full API documentation in the [Document Center](https://docs.agora.io/en/)
+- File bugs about this sample [here](https://github.com/AgoraIO/OpenVideoCall-Android/issues)
 
-## Additional Learning
+## Learn More
 - [1 to 1 Video Tutorial for Android](https://github.com/AgoraIO/Agora-Android-Tutorial-1to1)
-- Agora Video SDK samples are also available for the following platforms
+- Agora Video SDK samples are also available for the following platforms:
 	- OpenVideoCall for [iOS](https://github.com/AgoraIO/OpenVideoCall-iOS)
 	- OpenVideoCall for [Windows](https://github.com/AgoraIO/OpenVideoCall-Windows)
 	- OpenVideoCall for [MacOS](https://github.com/AgoraIO/OpenVideoCall-macOS)
 
 ## License
-This software is under the MIT License (MIT). [View the license](LICENSE.md).
+This software is licensed under the MIT License (MIT). [View the license](LICENSE.md).
 
